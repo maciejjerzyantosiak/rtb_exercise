@@ -21,5 +21,7 @@ def test_check_careers_offers_counter(load_page):
     _page.see_more(see_all=True)
     expect(_page.position_counter).to_have_text(f'{str(_page.job_offers.count())} positions in all locations')
     offers = _page.get_job_info()
-    save_dict_to_json(offers, config["careers_file_name"])
+    if len(offers) >= config['number_of_careers_to_save']:
+        offers = offers[:config['number_of_careers_to_save']]
+    save_dict_to_json(offers, config['careers_file_name'])
 
