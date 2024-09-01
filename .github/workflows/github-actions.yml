@@ -1,0 +1,28 @@
+name: dotnet ReplyExercise test project
+
+on: [push]
+
+jobs:
+  test:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+      - name: Install dependencies
+        run: |
+          cd $GITHUB_WORKSPACE
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Ensure browsers are installed
+        run: python -m playwright install --with-deps
+      - name: Run your tests
+        run: python -m pytest
+      - uses: actions/upload-artifact@v4
+        with:
+          name: playwright test results
+          path: test-results/
