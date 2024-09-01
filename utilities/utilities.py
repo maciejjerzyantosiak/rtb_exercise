@@ -14,7 +14,7 @@ def save_dict_to_json(data, filename):
 
 
 def get_config():
-    config_file = os.path.join(os.path.dirname(__file__), '..\\config', f'config.json')
+    config_file = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'config', f'config.json')
     with open(config_file) as config_data:
         data = json.load(config_data)
     return data
