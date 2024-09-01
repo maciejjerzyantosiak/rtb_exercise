@@ -4,8 +4,9 @@ import contextlib
 
 
 def save_dict_to_json(data, filename):
-    os.makedirs(os.path.join(os.path.dirname(__file__), '..\\test-results'), exist_ok=True)
-    file = os.path.join(os.path.dirname(__file__), '..\\test-results', f'{filename}.json')
+
+    os.makedirs(os.path.join(os.path.dirname(os.path.dirname(__file__)), 'test-results'), exist_ok=True)
+    file = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'test-results', f'{filename}.json')
     with contextlib.suppress(FileNotFoundError):
         os.remove(file)
     with open(file, 'w') as json_file:
