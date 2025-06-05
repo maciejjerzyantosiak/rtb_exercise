@@ -1,4 +1,4 @@
-name: dotnet ReplyExercise test project
+name: RTB Interview Task
 
 on: [push]
 
